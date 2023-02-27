@@ -8,7 +8,7 @@ public class CircularListImpl implements CircularList {
 
     private final List<Integer> elements = new ArrayList<>();
 
-    private int delta = -1;
+    private int delta = 0;
 
     @Override
     public void add(int element) {
@@ -30,13 +30,19 @@ public class CircularListImpl implements CircularList {
         if (isEmpty()) {
             return Optional.empty();
         }
+        final var nextElement = this.elements.get(delta);
         delta = (delta + 1) % this.elements.size();
-        return Optional.of(this.elements.get(delta));
+        return Optional.of(nextElement);
     }
 
     @Override
     public Optional<Integer> previous() {
-        return Optional.empty();
+        if (isEmpty()) {
+            return Optional.empty();
+        }
+        delta = (delta - 1 + this.size()) % this.size();
+        final var previousElement = this.elements.get(delta);
+        return Optional.of(previousElement);
     }
 
     @Override
