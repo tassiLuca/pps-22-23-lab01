@@ -48,6 +48,15 @@ public class CircularListTest {
         assertEquals(1, this.list.next().get());
     }
 
+    @Test
+    void testMultipleNextCallsLeadsToRestart() {
+        populateList();
+        this.list.next();
+        this.list.next();
+        this.list.next();
+        assertEquals(1, this.list.next().get());
+    }
+
     private void populateList() {
         this.list.add(1);
         this.list.add(2);
