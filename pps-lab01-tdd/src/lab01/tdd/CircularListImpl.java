@@ -15,7 +15,7 @@ public class CircularListImpl implements CircularList {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return this.size() == 0;
     }
 
     @Override
