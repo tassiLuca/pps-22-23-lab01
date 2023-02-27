@@ -8,6 +8,8 @@ public class CircularListImpl implements CircularList {
 
     private final List<Integer> elements = new ArrayList<>();
 
+    private int delta = -1;
+
     @Override
     public void add(int element) {
         this.elements.add(element);
@@ -25,7 +27,11 @@ public class CircularListImpl implements CircularList {
 
     @Override
     public Optional<Integer> next() {
-        return Optional.empty();
+        if (isEmpty()) {
+            return Optional.empty();
+        }
+        delta = (delta + 1) % this.elements.size();
+        return Optional.of(this.elements.get(delta));
     }
 
     @Override
