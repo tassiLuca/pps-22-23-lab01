@@ -47,6 +47,12 @@ class CircularListTest {
     }
 
     @Test
+    void testFilteredNextWithAlwaysFalsePredicate() {
+        populateList();
+        assertEquals(Optional.empty(), list.filteredNext(element -> false));
+    }
+
+    @Test
     void testFilteredNext() {
         populateList();
         checkListOfElements(
