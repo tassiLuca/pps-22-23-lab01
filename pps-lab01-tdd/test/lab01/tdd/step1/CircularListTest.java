@@ -1,7 +1,5 @@
-package step1;
+package lab01.tdd.step1;
 
-import lab01.tdd.step1.CircularList;
-import lab01.tdd.step1.CircularListImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +24,11 @@ public class CircularListTest {
     @Test
     void testIsInitiallyEmpty() {
         assertTrue(this.list.isEmpty());
+    }
+
+    @Test
+    void testInitialSizeIsZero() {
+        assertEquals(0, this.list.size());
     }
 
     @Test
