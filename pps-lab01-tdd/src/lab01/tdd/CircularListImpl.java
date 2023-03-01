@@ -47,6 +47,6 @@ public final class CircularListImpl implements CircularList {
 
     @Override
     public void reset() {
-
+        this.indexOfNextElement = 0;
     }
 }
