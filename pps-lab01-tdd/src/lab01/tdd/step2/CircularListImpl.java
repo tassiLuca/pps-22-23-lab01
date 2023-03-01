@@ -27,19 +27,19 @@ public final class CircularListImpl implements CircularList {
 
     @Override
     public Iterator<Integer> forwardIterator() {
-        return iteratorOf(IntStream.iterate(0, i -> (i + 1) % size()));
+        return iteratorOn(IntStream.iterate(0, i -> (i + 1) % size()));
     }
 
     @Override
     public Iterator<Integer> backwardIterator() {
-        return iteratorOf(
-                IntStream
-                    .iterate(0, i -> (i - 1 + size()) % size())
-                    .skip(1)
+        return iteratorOn(
+            IntStream
+                .iterate(0, i -> (i == 0 ? size() : i) - 1)
+                .skip(1)
         );
     }
 
-    private Iterator<Integer> iteratorOf(final IntStream positions) {
+    private Iterator<Integer> iteratorOn(final IntStream positions) {
         if (isEmpty()) {
             return Collections.emptyIterator();
         }
