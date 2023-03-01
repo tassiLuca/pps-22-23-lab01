@@ -3,6 +3,9 @@ package lab01.tdd.step3;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+/**
+ * Represents a circular list of integers.
+ */
 interface CircularList {
 
     /**
