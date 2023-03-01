@@ -62,11 +62,11 @@ class CircularListTest {
     }
 
     private void populateList() {
-        this.list.add(1);
-        this.list.add(2);
-        this.list.add(3);
-        this.list.add(4);
-        this.list.add(5);
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
     }
 
     private void checkListOfElements(List<Integer> expectedElements, Predicate<Integer> condition) {
