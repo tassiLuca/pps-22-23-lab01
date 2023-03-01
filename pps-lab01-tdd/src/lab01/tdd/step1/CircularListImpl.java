@@ -1,4 +1,4 @@
-package lab01.tdd;
+package lab01.tdd.step1;
 
 import java.util.ArrayList;
 import java.util.List;
