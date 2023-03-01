@@ -35,10 +35,4 @@ public interface CircularList {
      * @return an {@link Iterator} which allows to iterate backward the list in a circular manner.
      */
     Iterator<Integer> backwardIterator();
-
-    /**
-     * Reset the position of current element back to the first one of the list.
-     * Note the first one is the first added to the list.
-     */
-    void reset();
 }
