@@ -43,8 +43,26 @@ public class CircularListTest {
     }
 
     @Test
+    void testMultipleNextOnEmptyList() {
+        final var attempts = 10;
+        for (var i = 0; i < attempts; i++) {
+            assertEquals(Optional.empty(), this.list.next());
+        }
+        testFirstNextCallReturnFirstElement();
+    }
+
+    @Test
     void testPreviousCallOnEmptyList() {
         assertEquals(Optional.empty(), this.list.previous());
+    }
+
+    @Test
+    void testMultiplePreviousOnEmptyList() {
+        final var attempts = 10;
+        for (var i = 0; i < attempts; i++) {
+            assertEquals(Optional.empty(), this.list.previous());
+        }
+        testFirstPreviousCallReturnsLastElement();
     }
 
     @Test
