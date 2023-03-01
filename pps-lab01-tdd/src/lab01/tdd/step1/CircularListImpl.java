@@ -3,6 +3,7 @@ package lab01.tdd.step1;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public final class CircularListImpl implements CircularList {
 
@@ -27,22 +28,26 @@ public final class CircularListImpl implements CircularList {
 
     @Override
     public Optional<Integer> next() {
-        if (isEmpty()) {
-            return Optional.empty();
-        }
-        final var nextElement = this.elements.get(indexOfNextElement);
-        indexOfNextElement = (indexOfNextElement + 1) % this.size();
-        return Optional.of(nextElement);
+        return getElementAt(() -> {
+            final var requestedIndex = indexOfNextElement;
+            indexOfNextElement = (indexOfNextElement + 1) % size();
+            return requestedIndex;
+        });
     }
 
     @Override
     public Optional<Integer> previous() {
-        if (isEmpty()) {
-            return Optional.empty();
+        return getElementAt(() -> {
+            indexOfNextElement = (indexOfNextElement == 0 ? size() : indexOfNextElement) - 1;
+            return indexOfNextElement;
+        });
+    }
+
+    private Optional<Integer> getElementAt(Supplier<Integer> index) {
+        if (!isEmpty()) {
+            return Optional.of(elements.get(index.get()));
         }
-        indexOfNextElement = (indexOfNextElement - 1 + this.size()) % this.size();
-        final var previousElement = this.elements.get(indexOfNextElement);
-        return Optional.of(previousElement);
+        return Optional.empty();
     }
 
     @Override
