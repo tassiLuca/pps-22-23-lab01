@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CircularListImpl implements CircularList {
+public final class CircularListImpl implements CircularList {
 
     private final List<Integer> elements = new ArrayList<>();
 
-    private int delta = 0;
+    private int indexOfNextElement = 0;
 
     @Override
     public void add(int element) {
@@ -30,8 +30,8 @@ public class CircularListImpl implements CircularList {
         if (isEmpty()) {
             return Optional.empty();
         }
-        final var nextElement = this.elements.get(delta);
-        delta = (delta + 1) % this.elements.size();
+        final var nextElement = this.elements.get(indexOfNextElement);
+        indexOfNextElement = (indexOfNextElement + 1) % this.size();
         return Optional.of(nextElement);
     }
 
@@ -40,8 +40,8 @@ public class CircularListImpl implements CircularList {
         if (isEmpty()) {
             return Optional.empty();
         }
-        delta = (delta - 1 + this.size()) % this.size();
-        final var previousElement = this.elements.get(delta);
+        indexOfNextElement = (indexOfNextElement - 1 + this.size()) % this.size();
+        final var previousElement = this.elements.get(indexOfNextElement);
         return Optional.of(previousElement);
     }
 
