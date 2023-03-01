@@ -38,7 +38,7 @@ public class CircularListTest {
     }
 
     @Test
-    void testNextCallOnEmptyList() {
+    void testNextOnEmptyList() {
         assertEquals(Optional.empty(), this.list.next());
     }
 
@@ -48,11 +48,11 @@ public class CircularListTest {
         for (var i = 0; i < attempts; i++) {
             assertEquals(Optional.empty(), this.list.next());
         }
-        testFirstNextCallReturnFirstElement();
+        testFirstNextReturnsFirstElement();
     }
 
     @Test
-    void testPreviousCallOnEmptyList() {
+    void testPreviousOnEmptyList() {
         assertEquals(Optional.empty(), this.list.previous());
     }
 
@@ -62,17 +62,17 @@ public class CircularListTest {
         for (var i = 0; i < attempts; i++) {
             assertEquals(Optional.empty(), this.list.previous());
         }
-        testFirstPreviousCallReturnsLastElement();
+        testFirstPreviousReturnsLastElement();
     }
 
     @Test
-    void testFirstNextCallReturnFirstElement() {
+    void testFirstNextReturnsFirstElement() {
         populateList();
         assertEquals(Optional.of(1), this.list.next());
     }
 
     @Test
-    void testMultipleNextCallsLeadsToRestart() {
+    void testMultipleNextLeadsToRestart() {
         populateList();
         this.list.next();
         this.list.next();
@@ -81,13 +81,13 @@ public class CircularListTest {
     }
 
     @Test
-    void testFirstPreviousCallReturnsLastElement() {
+    void testFirstPreviousReturnsLastElement() {
         populateList();
         assertEquals(Optional.of(3), this.list.previous());
     }
 
     @Test
-    void testMultiplePreviousCallsLeadsToRestart() {
+    void testMultiplePreviousLeadsToRestart() {
         populateList();
         this.list.previous();
         this.list.previous();
